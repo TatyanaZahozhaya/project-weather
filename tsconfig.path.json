@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@home": ["./src/home"],
+            "@detailed_data": ["./src/detailed_data"],
+            "@response_list": ["./src/response_list"],
+            "@forecast_5_days": ["./src/forecast_5_days"],
+            "@page_layout": ["./src/page_layout"],
+            "@page_not_found": ["./src/page_not_found"],
+            "@shared": ["./src/shared"]
+        }
+    }
+}
