@@ -7,7 +7,13 @@ export interface ICityGeoState {
 }
 
 const initialState: ICityGeoState = {
-    cityGeo: {} as SharedTypes.ICityGeo,
+    cityGeo: {
+        lat: 0,
+        lon: 0,
+        name: '',
+        country: '',
+        state: '',
+    },
 };
 
 const cityGeoSlice = createSlice({

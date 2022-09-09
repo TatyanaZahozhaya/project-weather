@@ -11,7 +11,7 @@ import {
     SharedComponents,
     getLocalDay,
     getLocalDate,
-    createModyfiedAre,
+    createModyfiedArr,
 } from '@shared';
 
 export const ForecastEachDayInfo = () => {
@@ -45,7 +45,7 @@ export const ForecastEachDayInfo = () => {
 
     const dateForFilter = +getLocalDate(cityForecast.list[0].dt, timezone); //вырезаем только дату по местному времени, чтобы правильно разбить на массивы
 
-    const modyfiedArr = createModyfiedAre(cityForecast.list, timezone, dateForFilter);
+    const modyfiedArr = createModyfiedArr(cityForecast.list, timezone, dateForFilter);
 
     return (
         <>
@@ -62,6 +62,7 @@ export const ForecastEachDayInfo = () => {
                                     dt={row.dt}
                                     temp={row.main.temp}
                                     icon={row.weather[0].icon}
+                                    description={row.weather[0].description}
                                     timezone={timezone}
                                 />
                             ))}

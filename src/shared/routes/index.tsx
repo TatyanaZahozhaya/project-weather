@@ -1,7 +1,7 @@
 import { Home } from '@home';
 import { ResponseList } from '@response_list';
 import { DetailedData } from '@detailed_data';
-import { Forecast5Days } from '@forecast_5_days';
+import { ForecastSeveralDays } from '@forecast_several_days';
 import { PageNotFound } from '@page_not_found';
 import { PageLayout } from '@page_layout';
 
@@ -12,7 +12,7 @@ export enum Paths {
     PAGE_LAYOUT = '',
     RESPONSE_LIST = '/res',
     DETAILED_DATA = '/detailes',
-    FORECAST_5_DAYS = '/forecast',
+    FORECAST_SEVERAL_DAYS = '/forecast',
     PAGE_NOT_FOUND = '*',
 }
 
@@ -26,8 +26,8 @@ export const InnerRoutes: Array<SharedTypes.IRoute> = [
         path: Paths.DETAILED_DATA,
     },
     {
-        element: <Forecast5Days />,
-        path: Paths.FORECAST_5_DAYS,
+        element: <ForecastSeveralDays />,
+        path: Paths.FORECAST_SEVERAL_DAYS,
     },
 ];
 
@@ -49,8 +49,8 @@ export const AppRoutes: Array<SharedTypes.IRoute> = [
         path: Paths.DETAILED_DATA,
     },
     {
-        element: <Forecast5Days />,
-        path: Paths.FORECAST_5_DAYS,
+        element: <ForecastSeveralDays />,
+        path: Paths.FORECAST_SEVERAL_DAYS,
     },
     {
         element: <PageNotFound />,

@@ -14,7 +14,7 @@ export interface ICityCoord {
 
 export interface ICityGeo extends ICityCoord {
     name: string;
-    local_names: Array<string>;
+    local_names?: Array<string>;
     country: string;
     state: string;
 }

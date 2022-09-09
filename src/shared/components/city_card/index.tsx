@@ -42,15 +42,16 @@ export const CityCard = () => {
                 <SharedComponents.CityCardSecondaryText text={`${getLocalTime(dt, timezone)}`} />
                 <SharedComponents.GrigContainer>
                     <SharedComponents.CityCardMainText text={`${main.temp} °C`} />
-                    <SharedComponents.WeatherIcon icon={weather[0].icon} />
+                    <SharedComponents.WeatherIcon
+                        icon={weather[0].icon}
+                        title={weather[0].description}
+                    />
                 </SharedComponents.GrigContainer>
                 <SharedComponents.CityCardSecondaryText text={weather[0].description} />
                 <SharedComponents.CityCardSecondaryText text={`feels like ${main.feels_like}`} />
             </CardContent>
-            <SharedComponents.CityDataButton
-                title="Forecast for 5 days"
-                link={Paths.FORECAST_5_DAYS}
-            />
+            <SharedComponents.ToListButton />
+            <SharedComponents.ToForecastButton />
         </SharedComponents.CityDataContainer>
     );
 };
@@ -87,13 +88,11 @@ export const DetailedCityDataSection = () => {
                 measure="meter/sec"
                 value={wind.speed}
             />
-            {wind.gust ? (
-                <DetailedCityCard
-                    param="Wind gust,"
-                    measure="meter/sec"
-                    value={wind.gust}
-                />
-            ) : null}
+            <DetailedCityCard
+                param="Wind gust,"
+                measure="meter/sec"
+                value={wind.gust ? wind.gust : '-'}
+            />
         </SharedComponents.DetailedCityDataContainer>
     );
 };

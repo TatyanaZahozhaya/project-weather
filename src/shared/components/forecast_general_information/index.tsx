@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { CardContent } from '@mui/material';
+import { CardContent, Tooltip } from '@mui/material';
 
 import { getLocalTime, IAppState, Paths, SharedComponents } from '@shared';
 
@@ -9,7 +9,7 @@ export const ForecastGeneralInformation = () => {
     const { cityGeo } = useSelector((state: IAppState) => state.cityGeo);
 
     if (!cityGeo.name) {
-        return null
+        return null;
     }
     const { name, sys, weather, main, dt, timezone } = cityData;
     return (
@@ -19,14 +19,15 @@ export const ForecastGeneralInformation = () => {
                 <SharedComponents.CityCardSecondaryText text={`${getLocalTime(dt, timezone)}`} />
                 <SharedComponents.GrigContainer>
                     <SharedComponents.CityCardMainText text={`${main.temp} °C`} />
-                    <SharedComponents.WeatherIcon icon={weather[0].icon} />
+
+                    <SharedComponents.WeatherIcon
+                        icon={weather[0].icon}
+                        title={weather[0].description}
+                    />
                 </SharedComponents.GrigContainer>
             </CardContent>
-            <SharedComponents.CityDataButton
-                title="current data"
-                link={Paths.DETAILED_DATA}
-            />
+            <SharedComponents.ToListButton />
+            <SharedComponents.ToFDetailesButton />
         </SharedComponents.CityDataContainer>
     );
 };
-

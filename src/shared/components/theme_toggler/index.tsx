@@ -19,6 +19,7 @@ export const ThemeToggler = () => {
     return (
         <SharedComponents.ThemeButton
             ariaLabel="theme toggler (light/dark)"
+            title='theme toggler (light/dark)'
             onClick={onToggleTheme}
             value={theme}
         />

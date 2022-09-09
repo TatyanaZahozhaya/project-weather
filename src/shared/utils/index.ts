@@ -15,7 +15,7 @@ export const getLocalHoursMinutes = (a: any, b: any) => {
     return new Date((a + b) * 1000).toUTCString().slice(17, -7);
 };
 
-export const createModyfiedAre = (
+export const createModyfiedArr = (
     arr: Array<SharedTypes.IForecastListItem>,
     timezone: number,
     dateForFilter: number,

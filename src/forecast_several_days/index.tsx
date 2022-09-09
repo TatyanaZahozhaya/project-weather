@@ -1,6 +1,6 @@
 import { SharedComponents } from '@shared';
 
-export const Forecast5Days = () => {
+export const ForecastSeveralDays = () => {
     return (
         <>
             <SharedComponents.ForecastGeneralInformation />

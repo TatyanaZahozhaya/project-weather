@@ -1,13 +1,15 @@
 import { FC, memo } from 'react';
 
-import { Avatar } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 
 interface IWeatherIcon {
     icon: string;
+    title: string;
 }
 
-export const WeatherIcon: FC<IWeatherIcon> = memo(({ icon }) => {
+export const WeatherIcon: FC<IWeatherIcon> = memo(({ icon, title }) => {
     return (
+        <Tooltip title={title} arrow>
         <Avatar
             variant="rounded"
             alt="Weather icon"
@@ -18,5 +20,6 @@ export const WeatherIcon: FC<IWeatherIcon> = memo(({ icon }) => {
             }}
             src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         />
+        </Tooltip>
     );
 });
