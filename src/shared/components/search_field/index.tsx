@@ -6,7 +6,7 @@ export const SearchField = () => {
     const [name, setName] = useState('');
 
     const dispatch = useAppDispatch();
-    const { cityNameAdded } = Actions;
+    const { addCityName } = Actions;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.value.length >= 0) {
@@ -17,9 +17,8 @@ export const SearchField = () => {
     const onSubmitForm = (e: React.FormEvent): void => {
         if (name.length === 0) {
             alert('enter city name ');
-            setName('');
         } else {
-            dispatch(cityNameAdded(name));
+            dispatch(addCityName(name));
             setName('');
         }
     };

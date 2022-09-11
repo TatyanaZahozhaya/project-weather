@@ -1,17 +1,9 @@
-import axios from 'axios';
-
-import { SharedTypes } from '@shared';
-
-const instance = axios.create({
-    baseURL: 'http://api.openweathermap.org',
-    params: {
-        appid: process.env.REACT_APP_API_KEY,
-    },
-});
+import { SharedTypes, API } from '@shared';
 
 export class _Client {
+
     onResponse = async (url: string) => {
-        return await instance.get(url).then((response) => response.data);
+        return await API.get(url).then((response) => response.data);
     };
 
     fetchCityGeo = ({

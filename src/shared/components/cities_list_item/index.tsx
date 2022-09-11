@@ -5,11 +5,13 @@ import { SharedComponents, SharedTypes, Paths, Actions, useAppDispatch } from '@
 
 export const CitiesListItem = (item: SharedTypes.ICityGeo) => {
     const dispatch = useAppDispatch();
-    const { cityGeoAdded } = Actions;
+    const { addCityGeo } = Actions;
 
     const getDetailedInfo = () => {
-        dispatch(cityGeoAdded(item));
+        dispatch(addCityGeo(item));
     };
+
+    const {name, country, state } = item;
 
     return (
         <>
@@ -21,10 +23,10 @@ export const CitiesListItem = (item: SharedTypes.ICityGeo) => {
                         <LocationCityIcon />
                     </Avatar>
                 </ListItemAvatar>
-                {item.state ? (
-                    <ListItemText primary={`${item.name} - ${item.country} - ${item.state}`} />
+                {state ? (
+                    <ListItemText primary={`${name} - ${country} - ${state}`} />
                 ) : (
-                    <ListItemText primary={`${item.name} - ${item.country}`} />
+                    <ListItemText primary={`${name} - ${country}`} />
                 )}
             </SharedComponents.ListItemAsLink>
             <SharedComponents.ItemDevider />

@@ -12,7 +12,7 @@ const cityNameSlice = createSlice({
     name: 'cityName',
     initialState,
     reducers: {
-        cityNameAdded: (state, action) => {
+        addCityName: (state, action) => {
             state.cityName = action.payload;
         },
     },
@@ -20,4 +20,4 @@ const cityNameSlice = createSlice({
 
 const { actions, reducer } = cityNameSlice;
 export default reducer;
-export const { cityNameAdded } = actions;
+export const { addCityName } = actions;

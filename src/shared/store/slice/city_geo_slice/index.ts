@@ -20,7 +20,7 @@ const cityGeoSlice = createSlice({
     name: 'cityGeo',
     initialState,
     reducers: {
-        cityGeoAdded: (state, action) => {
+        addCityGeo: (state, action) => {
             state.cityGeo = action.payload;
         },
     },
@@ -28,4 +28,4 @@ const cityGeoSlice = createSlice({
 
 const { actions, reducer } = cityGeoSlice;
 export default reducer;
-export const { cityGeoAdded } = actions;
+export const { addCityGeo } = actions;

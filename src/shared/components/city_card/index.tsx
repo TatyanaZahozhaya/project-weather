@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CardContent from '@mui/material/CardContent';
 
-import { SharedComponents, Paths, IAppState, getLocalTime, Actions, useAppDispatch } from '@shared';
+import { SharedComponents, IAppState, getLocalTime, Actions, useAppDispatch } from '@shared';
 import { CircularProgress } from '@mui/material';
 
 export const CityCard = () => {

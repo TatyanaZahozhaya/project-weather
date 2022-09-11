@@ -15,8 +15,8 @@ const initialState: ICityForecastState = {
     error: '',
 };
 
-export const fetchCityForecast5Days = createAsyncThunk(
-    'cityForecast/fetchCityForecast5Days',
+export const fetchCityForecast = createAsyncThunk(
+    'cityForecast/fetchCityForecast',
     async function ({ lat, lon }: SharedTypes.ICityCoord, { rejectWithValue }) {
         try {
             const { fetchCityForecast } = Client;
@@ -33,14 +33,14 @@ const cityForecastSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCityForecast5Days.pending, (state) => {
+            .addCase(fetchCityForecast.pending, (state) => {
                 state.cityForecastLoadingStatus = 'loading';
             })
-            .addCase(fetchCityForecast5Days.fulfilled, (state, action) => {
+            .addCase(fetchCityForecast.fulfilled, (state, action) => {
                 state.cityForecastLoadingStatus = 'idle';
                 state.cityForecast = action.payload;
             })
-            .addCase(fetchCityForecast5Days.rejected, (state, action) => {
+            .addCase(fetchCityForecast.rejected, (state, action) => {
                 state.cityForecastLoadingStatus = 'error';
                 state.error = action.payload;
             });

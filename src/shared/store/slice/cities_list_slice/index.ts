@@ -54,3 +54,4 @@ const citiesListSlice = createSlice({
 
 const { reducer } = citiesListSlice;
 export default reducer;
+

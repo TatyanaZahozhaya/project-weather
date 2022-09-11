@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
-import { CardContent, Tooltip } from '@mui/material';
+import { CardContent } from '@mui/material';
 
-import { getLocalTime, IAppState, Paths, SharedComponents } from '@shared';
+import { getLocalTime, IAppState, SharedComponents } from '@shared';
 
 export const ForecastGeneralInformation = () => {
     const { cityData } = useSelector((state: IAppState) => state.cityData);

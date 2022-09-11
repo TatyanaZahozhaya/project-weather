@@ -22,12 +22,12 @@ export const ForecastEachDayInfo = () => {
     );
 
     const dispatch = useAppDispatch();
-    const { fetchCityForecast5Days } = Actions;
+    const { fetchCityForecast } = Actions;
 
     useEffect(() => {
         if (cityGeo.name) {
             const { lat, lon } = cityGeo;
-            dispatch(fetchCityForecast5Days({ lat: lat, lon: lon }));
+            dispatch(fetchCityForecast({ lat: lat, lon: lon }));
         }
     }, []);
 
