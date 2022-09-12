@@ -30,6 +30,10 @@ export const CitiesList = () => {
         return <CircularProgress color="secondary" />;
     }
     
+    if (cityName && citiesList.length === 0 ) {
+        return <SharedComponents.WarningMessage text="City not found. Please, check spelling" />;
+    }
+
     if (citiesList.length === 0) {
         return <SharedComponents.WarningMessage text="Please, enter city name" />;
     }

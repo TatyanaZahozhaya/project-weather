@@ -4,7 +4,7 @@ import { SharedComponents } from "@shared";
 
 export const AppFooter = () => {
     return (
-        <Box>
+        <Box component='footer'>
             <SharedComponents.AppBarFooter>
                 <Toolbar>2022 GoodWeather</Toolbar>
             </SharedComponents.AppBarFooter>

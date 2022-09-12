@@ -1,11 +1,14 @@
 import { FC, memo } from 'react';
+import { Link } from 'react-router-dom';
 
-import { Button, ToggleButton, Tooltip, Fade } from '@mui/material';
+import { Box, ToggleButton, Tooltip, Fade } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useTheme } from '@mui/material/styles';
-import { Paths } from '@shared';
 
+import styled from '@emotion/styled';
+
+import { Paths } from '@shared';
 
 interface IThemeButton {
     onClick(e: React.MouseEvent): void;
@@ -51,33 +54,59 @@ export const ThemeButton: FC<IThemeButton> = memo(({ onClick, ariaLabel, value, 
     );
 });
 
+const ButtonStyled = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+`;
 export const CityDataButton: FC<ICityDataButton> = memo(({ title, link, ariaLabel }) => {
+    const { palette, spacing } = useTheme();
     return (
-        <Button
-            size="small"
-            component="a"
+        <Box
             sx={{
-                color: 'secondary.main',
-            }}
-            href={link}
-            aria-label={ariaLabel}>
-            {title}
-        </Button>
+                display: 'inline-block',
+                padding: `${spacing(0.6)}`,
+                margin: `${spacing(0.7)}`,
+                borderRadius: `${spacing(0.5)}`,
+                color: 'inherit',
+                fontSize: '14px',
+                backgroundColor: palette.secondary.light,
+                '&:hover': {
+                    backgroundColor: palette.secondary.main,
+                },
+            }}>
+            <ButtonStyled
+                to={link}
+                aria-label={ariaLabel}>
+                {title}
+            </ButtonStyled>
+        </Box>
     );
 });
 
 export const ToListButton = () => {
     return (
-        <CityDataButton title="To list" ariaLabel='To list button' link={Paths.RESPONSE_LIST}/>
-    )
-}
+        <CityDataButton
+            title="To list"
+            ariaLabel="To list button"
+            link={Paths.RESPONSE_LIST}
+        />
+    );
+};
 export const ToForecastButton = () => {
     return (
-        <CityDataButton title="Forecast for 5 days" ariaLabel='Forecast for 5 days button' link={Paths.FORECAST_SEVERAL_DAYS}/>
-    )
-}
+        <CityDataButton
+            title="Forecast for 5 days"
+            ariaLabel="Forecast for 5 days button"
+            link={Paths.FORECAST_SEVERAL_DAYS}
+        />
+    );
+};
 export const ToFDetailesButton = () => {
     return (
-        <CityDataButton title="Current data" ariaLabel='Current data button' link={Paths.DETAILED_DATA}/>
-    )
-}
+        <CityDataButton
+            title="Current data"
+            ariaLabel="Current data button"
+            link={Paths.DETAILED_DATA}
+        />
+    );
+};

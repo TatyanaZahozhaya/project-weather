@@ -7,6 +7,7 @@ export const dark = createTheme({
         },
         secondary: {
             main: '#cd623e',
+            light: 'rgba(205, 98, 62, 0.7)',
         },
         text: {
             primary: '#fbf4f4',

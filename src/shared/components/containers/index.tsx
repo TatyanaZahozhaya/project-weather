@@ -41,6 +41,7 @@ export const MainPartContainer: FC<IAppContainer> = memo(({ children }) => {
     const { spacing } = useTheme();
     return (
         <FlexBoxC
+            component="main"
             sx={{
                 flex: '1 1 auto',
                 mt: `${spacing(10)}`,
@@ -62,6 +63,7 @@ export const MainPartContainerHomePage: FC<IAppContainer> = memo(({ children }) 
             in={true}
             {...{ timeout: 1000 }}>
             <FlexBoxC
+                component="main"
                 sx={{
                     mt: `${spacing(10)}`,
                     mb: `${spacing(3)}`,

@@ -7,26 +7,24 @@ export const CitiesListItem = (item: SharedTypes.ICityGeo) => {
     const dispatch = useAppDispatch();
     const { addCityGeo } = Actions;
 
-    const getDetailedInfo = () => {
-        dispatch(addCityGeo(item));
-    };
-
-    const {name, country, state } = item;
+    const { name, country, state } = item;
 
     return (
         <>
             <SharedComponents.ListItemAsLink
-                href={Paths.DETAILED_DATA}
-                onClick={getDetailedInfo}>
+                to={Paths.DETAILED_DATA}
+                onClick={() => {
+                    dispatch(addCityGeo(item));
+                }}>
                 <ListItemAvatar>
                     <Avatar>
                         <LocationCityIcon />
                     </Avatar>
                 </ListItemAvatar>
                 {state ? (
-                    <ListItemText primary={`${name} - ${country} - ${state}`} />
+                    <ListItemText sx={{ mt: 1 }} primary={`${name} - ${country} - ${state}`} />
                 ) : (
-                    <ListItemText primary={`${name} - ${country}`} />
+                    <ListItemText sx={{ mt: 1 }} primary={`${name} - ${country}`} />
                 )}
             </SharedComponents.ListItemAsLink>
             <SharedComponents.ItemDevider />

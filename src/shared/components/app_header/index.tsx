@@ -4,7 +4,7 @@ import { SharedComponents, Paths } from '@shared';
 
 export const AppHeader = () => {
     return (
-        <Box>
+        <Box component='header'>
             <SharedComponents.AppBarHeader>
                 <SharedComponents.ToolbarHeader>
                     <SharedComponents.ThemeToggler />
@@ -16,7 +16,7 @@ export const AppHeader = () => {
 
 export const AppHeaderWithSearchField = () => {
     return (
-        <Box>
+        <Box component='header'>
             <SharedComponents.AppBarHeader>
                 <SharedComponents.ToolbarHeaderWithSearchField>
                     <SharedComponents.LogoHeader

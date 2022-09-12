@@ -6,7 +6,7 @@ export interface ICitiesListState {
     cityName: string;
     citiesList: Array<SharedTypes.ICityGeo>;
     citiesListLoadingStatus: 'loading' | 'idle' | 'error';
-    error: any; //or unnown
+    error: any; 
 }
 
 const initialState: ICitiesListState = {
@@ -22,9 +22,7 @@ export const fetchCitiesList = createAsyncThunk(
         try {
             const { fetchCityGeo } = Client;
             const coord = await fetchCityGeo({ city: city });
-            if (!coord[0]) {
-                alert('city not found. check the spelling');
-            }
+
             return coord;
         } catch (error: any) {
             return rejectWithValue(error.message);

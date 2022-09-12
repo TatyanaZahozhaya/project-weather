@@ -18,7 +18,7 @@ export const SearchField = () => {
         if (name.length === 0) {
             alert('enter city name ');
         } else {
-            dispatch(addCityName(name));
+            dispatch(addCityName(name)); 
             setName('');
         }
     };

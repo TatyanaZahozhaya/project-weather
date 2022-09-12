@@ -50,6 +50,7 @@ export const CityCard = () => {
                 <SharedComponents.CityCardSecondaryText text={weather[0].description} />
                 <SharedComponents.CityCardSecondaryText text={`feels like ${main.feels_like}`} />
             </CardContent>
+            
             <SharedComponents.ToListButton />
             <SharedComponents.ToForecastButton />
         </SharedComponents.CityDataContainer>

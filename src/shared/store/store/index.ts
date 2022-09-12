@@ -27,15 +27,44 @@ export interface IAppState {
     theme: IThemeState;
 }
 
-const rootReducer = combineReducers({ cityName, citiesList, cityGeo, cityData, cityForecast, theme });
-const persistConfig = {
-    key: 'root',
+const cityNamePersistConfig = {
+    key: 'cityName',
     storage,
 };
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const citiesListPersistConfig = {
+    key: 'citiesList',
+    storage,
+    blacklist: ['citiesListLoadingStatus', 'error'],
+};
+
+const cityGeoPersistConfig = {
+    key: 'cityGeo',
+    storage,
+};
+
+const cityDataPersistConfig = {
+    key: 'cityData',
+    storage,
+    whitelist: ['cityData'],
+};
+
+const themePersistConfig = {
+    key: 'theme',
+    storage,
+};
+
+const rootReducer = combineReducers({
+    cityName: persistReducer(cityNamePersistConfig, cityName),
+    citiesList: persistReducer(citiesListPersistConfig, citiesList),
+    cityGeo: persistReducer(cityGeoPersistConfig, cityGeo),
+    cityData: persistReducer(cityDataPersistConfig, cityData),
+    cityForecast,
+    theme: persistReducer(themePersistConfig, theme),
+});
 
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

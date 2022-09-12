@@ -8,6 +8,7 @@ export const light = createTheme({
         },
         secondary: {
             main: '#cd623e',
+            light: 'rgba(205, 98, 62, 0.7)',
         },
         background: {
             paper: '#e2f6fe',

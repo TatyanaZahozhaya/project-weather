@@ -1,17 +1,24 @@
 import { FC, memo } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Typography } from '@mui/material';
+
+import styled from '@emotion/styled';
 
 interface ILogoHeader {
     href: string;
     text: string;
 }
 
+const LinkStyled = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+`;
+
 export const LogoHeader: FC<ILogoHeader> = memo(({ href, text }) => {
     return (
         <Typography
-            component="a"
-            href={href}
             variant="h6"
             sx={{
                 textDecoration: 'none',
@@ -20,7 +27,7 @@ export const LogoHeader: FC<ILogoHeader> = memo(({ href, text }) => {
                     gridArea: '1/1/2/2',
                 },
             }}>
-            {text}
+            <LinkStyled to={href}>{text}</LinkStyled>
         </Typography>
     );
 });
