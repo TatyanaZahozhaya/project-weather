@@ -1,10 +1,8 @@
 import { useSelector } from 'react-redux';
-
 import { SharedComponents, IAppState, useAppDispatch, Actions } from '@shared';
 
 export const ThemeToggler = () => {
     const { theme } = useSelector((state: IAppState) => state.theme);
-    
     const dispatch = useAppDispatch();
     const { setAppTheme } = Actions;
 
@@ -19,7 +17,7 @@ export const ThemeToggler = () => {
     return (
         <SharedComponents.ThemeButton
             ariaLabel="theme toggler (light/dark)"
-            title='theme toggler (light/dark)'
+            title="theme toggler (light/dark)"
             onClick={onToggleTheme}
             value={theme}
         />

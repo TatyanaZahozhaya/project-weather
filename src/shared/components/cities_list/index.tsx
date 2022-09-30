@@ -1,36 +1,24 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
-import { SharedComponents, SharedTypes, IAppState, Actions, useAppDispatch } from '@shared';
 import { CircularProgress } from '@mui/material';
+import { SharedComponents, SharedTypes, IAppState, Actions, useAppDispatch } from '@shared';
 
-const renderCitiesListItem = (item: SharedTypes.ICityGeo) => {
-    return (
-        <SharedComponents.CitiesListItem
-            key={`${item.lat}-${item.lon}`}
-            {...item}
-        />
+export const CitiesList = ({ name }: SharedTypes.IResponseName) => {
+    const { citiesList, citiesListLoadingStatus, error } = useSelector(
+        (state: IAppState) => state.citiesList,
     );
-};
-
-export const CitiesList = () => {
-    const { cityName } = useSelector((state: IAppState) => state.cityName);
-    const { citiesList, citiesListLoadingStatus, error } = useSelector((state: IAppState) => state.citiesList);
-
     const dispatch = useAppDispatch();
     const { fetchCitiesList } = Actions;
 
     useEffect(() => {
-        if (cityName) {
-            dispatch(fetchCitiesList(cityName));
-        }
-    }, [cityName, dispatch, fetchCitiesList]);
+        dispatch(fetchCitiesList(name));
+    }, [name, dispatch, fetchCitiesList]);
 
     if (citiesListLoadingStatus === 'loading') {
         return <CircularProgress color="secondary" />;
     }
-    
-    if (cityName && citiesList.length === 0 ) {
+
+    if (name && citiesList.length === 0) {
         return <SharedComponents.WarningMessage text="City not found. Please, check spelling" />;
     }
 
@@ -41,10 +29,19 @@ export const CitiesList = () => {
     if (error) {
         return <SharedComponents.WarningMessage text="Something is wrong... Please, try later" />;
     }
-    
+
     return (
         <SharedComponents.ListElement>
             {citiesList.map(renderCitiesListItem)}
         </SharedComponents.ListElement>
+    );
+};
+
+const renderCitiesListItem = (item: SharedTypes.ICityGeo) => {
+    return (
+        <SharedComponents.CitiesListItem
+            key={`${item.lat}-${item.lon}`}
+            {...item}
+        />
     );
 };

@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-
 import { InnerRoutes, SharedTypes, Theme, IAppState, Paths } from '@shared';
-
 import { Home } from '@home';
 import { PageLayout } from '@page_layout';
 import { PageNotFound } from '@page_not_found';
-
-const renderRoutes = ({ element, path }: SharedTypes.IRoute): React.ReactElement => {
-    return (
-        <Route
-            element={element}
-            path={path}
-            key={path}
-        />
-    );
-};
 
 function App() {
     const { theme } = useSelector((state: IAppState) => state.theme);
@@ -60,5 +47,15 @@ function App() {
         </>
     );
 }
+
+const renderRoutes = ({ element, path }: SharedTypes.IRoute): React.ReactElement => {
+    return (
+        <Route
+            element={element}
+            path={path}
+            key={path}
+        />
+    );
+};
 
 export default App;

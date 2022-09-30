@@ -13,7 +13,6 @@ import storage from 'redux-persist/lib/storage';
 
 import cityName, { type ICityNameState } from '../slice/city_name_slice';
 import citiesList, { type ICitiesListState } from '../slice/cities_list_slice/index';
-import cityGeo, { type ICityGeoState } from '../slice/city_geo_slice';
 import cityData, { type ICityDataState } from '../slice/city_data_slice';
 import cityForecast, { type ICityForecastState } from '../slice/city_forecast_slice';
 import theme, { type IThemeState } from '../slice/theme_slice';
@@ -21,7 +20,6 @@ import theme, { type IThemeState } from '../slice/theme_slice';
 export interface IAppState {
     cityName: ICityNameState;
     citiesList: ICitiesListState;
-    cityGeo: ICityGeoState;
     cityData: ICityDataState;
     cityForecast: ICityForecastState;
     theme: IThemeState;
@@ -32,23 +30,6 @@ const cityNamePersistConfig = {
     storage,
 };
 
-const citiesListPersistConfig = {
-    key: 'citiesList',
-    storage,
-    blacklist: ['citiesListLoadingStatus', 'error'],
-};
-
-const cityGeoPersistConfig = {
-    key: 'cityGeo',
-    storage,
-};
-
-const cityDataPersistConfig = {
-    key: 'cityData',
-    storage,
-    whitelist: ['cityData'],
-};
-
 const themePersistConfig = {
     key: 'theme',
     storage,
@@ -56,9 +37,8 @@ const themePersistConfig = {
 
 const rootReducer = combineReducers({
     cityName: persistReducer(cityNamePersistConfig, cityName),
-    citiesList: persistReducer(citiesListPersistConfig, citiesList),
-    cityGeo: persistReducer(cityGeoPersistConfig, cityGeo),
-    cityData: persistReducer(cityDataPersistConfig, cityData),
+    citiesList,
+    cityData,
     cityForecast,
     theme: persistReducer(themePersistConfig, theme),
 });

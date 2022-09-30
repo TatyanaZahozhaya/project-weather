@@ -1,5 +1,5 @@
-import { SharedComponents } from '@shared';
 import { Outlet } from 'react-router-dom';
+import { SharedComponents } from '@shared';
 
 export const PageLayout = () => {
     return (

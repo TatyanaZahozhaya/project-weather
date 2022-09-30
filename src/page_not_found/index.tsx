@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material';
-
 import { SharedComponents, Paths } from '@shared';
 
 export const PageNotFound = () => {
@@ -9,7 +8,7 @@ export const PageNotFound = () => {
             <SharedComponents.MainPartContainer>
                 <Typography variant="h3">Page not found</Typography>
                 <SharedComponents.CityDataContainer>
-                <SharedComponents.LogoHeader
+                    <SharedComponents.LogoHeader
                         text="GoodWeather"
                         href={Paths.HOME}
                     />
@@ -19,4 +18,3 @@ export const PageNotFound = () => {
         </SharedComponents.AppContainer>
     );
 };
-

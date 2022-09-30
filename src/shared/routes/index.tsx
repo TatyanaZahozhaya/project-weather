@@ -11,23 +11,27 @@ export enum Paths {
     HOME = '/',
     PAGE_LAYOUT = '',
     RESPONSE_LIST = '/res',
-    DETAILED_DATA = '/detailes',
+    RESPONSE_LIST_DATA = '/res/:name',
+    DETAILED_DATA = '/details',
+    DETAILED_DATA_CITY = '/details/:id',
     FORECAST_SEVERAL_DAYS = '/forecast',
+    FORECAST_SEVERAL_DAYS_CITY = '/forecast/:id',
     PAGE_NOT_FOUND = '*',
 }
+
 
 export const InnerRoutes: Array<SharedTypes.IRoute> = [
     {
         element: <ResponseList />,
-        path: Paths.RESPONSE_LIST,
+        path: Paths.RESPONSE_LIST_DATA,
     },
     {
         element: <DetailedData />,
-        path: Paths.DETAILED_DATA,
+        path: Paths.DETAILED_DATA_CITY,
     },
     {
         element: <ForecastSeveralDays />,
-        path: Paths.FORECAST_SEVERAL_DAYS,
+        path: Paths.FORECAST_SEVERAL_DAYS_CITY,
     },
 ];
 

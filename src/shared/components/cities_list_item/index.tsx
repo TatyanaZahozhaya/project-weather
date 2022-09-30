@@ -1,30 +1,28 @@
 import { Avatar, ListItemAvatar, ListItemText } from '@mui/material';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-
-import { SharedComponents, SharedTypes, Paths, Actions, useAppDispatch } from '@shared';
+import { SharedComponents, SharedTypes, Paths } from '@shared';
 
 export const CitiesListItem = (item: SharedTypes.ICityGeo) => {
-    const dispatch = useAppDispatch();
-    const { addCityGeo } = Actions;
-
-    const { name, country, state } = item;
+    const { name, country, state, lat, lon } = item;
 
     return (
         <>
-            <SharedComponents.ListItemAsLink
-                to={Paths.DETAILED_DATA}
-                onClick={() => {
-                    dispatch(addCityGeo(item));
-                }}>
+            <SharedComponents.ListItemAsLink to={`${Paths.DETAILED_DATA}/${lat}-${lon}`}>
                 <ListItemAvatar>
                     <Avatar>
                         <LocationCityIcon />
                     </Avatar>
                 </ListItemAvatar>
                 {state ? (
-                    <ListItemText sx={{ mt: 1 }} primary={`${name} - ${country} - ${state}`} />
+                    <ListItemText
+                        sx={{ mt: 1 }}
+                        primary={`${name} - ${country} - ${state}`}
+                    />
                 ) : (
-                    <ListItemText sx={{ mt: 1 }} primary={`${name} - ${country}`} />
+                    <ListItemText
+                        sx={{ mt: 1 }}
+                        primary={`${name} - ${country}`}
+                    />
                 )}
             </SharedComponents.ListItemAsLink>
             <SharedComponents.ItemDevider />

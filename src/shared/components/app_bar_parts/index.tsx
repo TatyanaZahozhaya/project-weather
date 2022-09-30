@@ -1,5 +1,4 @@
 import { FC, memo } from 'react';
-
 import { AppBar, Toolbar } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 

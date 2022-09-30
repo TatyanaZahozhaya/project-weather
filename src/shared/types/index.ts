@@ -3,6 +3,20 @@ export interface IRoute {
     path: string;
 }
 
+export interface IDataSection {
+    id: string;
+}
+
+export interface IResponseName {
+    name: string;
+}
+
+export interface ICityDataParams {
+    param: string;
+    measure: string;
+    value: string;
+}
+
 export interface ICityGeoInput {
     city: string;
 }

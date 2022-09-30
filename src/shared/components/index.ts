@@ -6,11 +6,18 @@ export {
 } from './app_bar_parts';
 export { AppFooter } from './app_footer';
 export { AppHeader, AppHeaderWithSearchField } from './app_header';
-export { ThemeButton, ToListButton, ToForecastButton, ToFDetailesButton } from './buttons';
+export {
+    ThemeButton,
+    ToListButton,
+    ToForecastButton,
+    ToFDetailesButton,
+    ToHomePageButton,
+} from './buttons';
 export { CitiesList } from './cities_list';
 export { CitiesListItem } from './cities_list_item';
 export { ListElement, ListItemAsLink } from './cities_list_parts';
-export { CityCard, DetailedCityCard, DetailedCityDataSection } from './city_card';
+export { CityCard } from './city_card';
+export { CityCardData } from './city_card_data';
 export {
     GrigContainer,
     AppContainer,
@@ -22,17 +29,17 @@ export {
     DetailedCardContainer,
     DetailedCityDataContainer,
 } from './containers';
+export { DetailsSection } from './details_section';
+export { DetailsSectionData } from './details_section_data';
 export { ItemDevider } from './divider';
 export { ForecastGeneralInformation } from './forecast_general_information';
-export { ForecastEachDayInfo } from './forecast_each_day_info';
+export { ForecastSection } from './forecast_section';
+export { ForecastSectionData } from './forecast_section_data';
 export { ForecastTableRow } from './forecast_table_row';
 export { ForecastTableTitle } from './forecast_table_title';
 export { LogoHeader } from './logo_header';
 export { SearchField } from './search_field';
-export {
-    InputSearchField,
-    FormSearchField,
-} from './search_field_parts';
+export { InputSearchField, FormSearchField } from './search_field_parts';
 export {
     TitleHomePage,
     CityCardNameText,

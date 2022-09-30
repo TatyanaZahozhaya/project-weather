@@ -1,10 +1,9 @@
 import { Box } from '@mui/material';
-
 import { SharedComponents, Paths } from '@shared';
 
 export const AppHeader = () => {
     return (
-        <Box component='header'>
+        <Box component="header">
             <SharedComponents.AppBarHeader>
                 <SharedComponents.ToolbarHeader>
                     <SharedComponents.ThemeToggler />
@@ -16,7 +15,7 @@ export const AppHeader = () => {
 
 export const AppHeaderWithSearchField = () => {
     return (
-        <Box component='header'>
+        <Box component="header">
             <SharedComponents.AppBarHeader>
                 <SharedComponents.ToolbarHeaderWithSearchField>
                     <SharedComponents.LogoHeader

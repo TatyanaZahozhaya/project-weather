@@ -1,5 +1,4 @@
 import { FC, memo } from 'react';
-
 import Box, { BoxProps } from '@mui/material/Box';
 import { Card, CardActions, CardContent, Grow } from '@mui/material';
 import { styled } from '@mui/material/styles';

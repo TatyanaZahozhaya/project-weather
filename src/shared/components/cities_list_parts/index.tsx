@@ -1,12 +1,12 @@
 import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
-
 import { Grow, List, ListItem } from '@mui/material';
 import styled from '@emotion/styled';
 
 interface IListElement {
     children?: React.ReactNode;
 }
+
 export const ListElement: FC<IListElement> = memo(({ children }) => {
     return (
         <Grow
@@ -26,7 +26,7 @@ export const ListElement: FC<IListElement> = memo(({ children }) => {
 
 interface IListItemAsLink {
     children?: React.ReactNode;
-    onClick(e: React.MouseEvent): void;
+    onClick?(e: React.MouseEvent): void;
     to: string;
 }
 
@@ -39,7 +39,7 @@ const LinkStyled = styled(Link)`
 
 export const ListItemAsLink: FC<IListItemAsLink> = memo(({ children, onClick, to }) => {
     return (
-        <ListItem onClick={onClick} >
+        <ListItem onClick={onClick}>
             <LinkStyled to={to}>{children}</LinkStyled>
         </ListItem>
     );

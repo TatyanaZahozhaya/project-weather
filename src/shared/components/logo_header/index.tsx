@@ -1,8 +1,6 @@
 import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
-
 import { Typography } from '@mui/material';
-
 import styled from '@emotion/styled';
 
 interface ILogoHeader {

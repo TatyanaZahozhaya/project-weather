@@ -1,33 +1,31 @@
 import { useSelector } from 'react-redux';
-
 import { CardContent } from '@mui/material';
+import { CircularProgress } from '@mui/material';
+import { IAppState, SharedComponents, SharedTypes } from '@shared';
 
-import { getLocalTime, IAppState, SharedComponents } from '@shared';
+export const ForecastGeneralInformation = ({ id }: SharedTypes.IDataSection) => {
+    const { cityDataLoadingStatus, error } = useSelector((state: IAppState) => state.cityData);
+    const { cityName } = useSelector((state: IAppState) => state.cityName);
 
-export const ForecastGeneralInformation = () => {
-    const { cityData } = useSelector((state: IAppState) => state.cityData);
-    const { cityGeo } = useSelector((state: IAppState) => state.cityGeo);
-
-    if (!cityGeo.name) {
-        return null;
+    if (cityDataLoadingStatus === 'loading') {
+        return <CircularProgress color="secondary" />;
     }
-    const { name, sys, weather, main, dt, timezone } = cityData;
+
+    if (error) {
+        return <SharedComponents.WarningMessage text="Incorrect URL" />;
+    }
+
     return (
         <SharedComponents.CityDataContainer>
             <CardContent>
-                <SharedComponents.CityCardNameText text={`${name}, ${sys.country}`} />
-                <SharedComponents.CityCardSecondaryText text={`${getLocalTime(dt, timezone)}`} />
-                <SharedComponents.GrigContainer>
-                    <SharedComponents.CityCardMainText text={`${main.temp} °C`} />
-
-                    <SharedComponents.WeatherIcon
-                        icon={weather[0].icon}
-                        title={weather[0].description}
-                    />
-                </SharedComponents.GrigContainer>
+                <SharedComponents.CityCardData />
             </CardContent>
-            <SharedComponents.ToListButton />
-            <SharedComponents.ToFDetailesButton />
+            {cityName ? (
+                <SharedComponents.ToListButton name={cityName} />
+            ) : (
+                <SharedComponents.ToHomePageButton />
+            )}
+            <SharedComponents.ToFDetailesButton id={id} />
         </SharedComponents.CityDataContainer>
     );
 };

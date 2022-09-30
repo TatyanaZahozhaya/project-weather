@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { cityForecastInitialState } from './initial_state_parts';
 import { SharedTypes, Client } from '@shared';
+
+import { cityForecastInitialState } from './initial_state_parts';
 
 export interface ICityForecastState {
     cityForecast: SharedTypes.ICityForecastOutput;

@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { cityDataIniitialState } from './initial_state_parts';
 import { SharedTypes, Client } from '@shared';
+
+import { cityDataIniitialState } from './initial_state_parts';
 
 export interface ICityDataState {
     cityData: SharedTypes.ICityDataOutput;

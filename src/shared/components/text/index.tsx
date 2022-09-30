@@ -1,5 +1,4 @@
 import { FC, memo } from 'react';
-
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 

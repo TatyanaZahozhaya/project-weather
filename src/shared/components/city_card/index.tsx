@@ -1,109 +1,45 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import CardContent from '@mui/material/CardContent';
-
-import { SharedComponents, IAppState, getLocalTime, Actions, useAppDispatch } from '@shared';
 import { CircularProgress } from '@mui/material';
+import {
+    SharedComponents,
+    IAppState,
+    Actions,
+    useAppDispatch,
+    SharedTypes,
+    getCoordFromId,
+} from '@shared';
 
-export const CityCard = () => {
-    const { cityData, cityDataLoadingStatus, error } = useSelector(
-        (state: IAppState) => state.cityData,
-    );
-    const { cityGeo } = useSelector((state: IAppState) => state.cityGeo);
-
-    const dispatch = useAppDispatch();
+export const CityCard = ({ id }: SharedTypes.IDataSection) => {
     const { fetchCityDetailedData } = Actions;
+    const { cityDataLoadingStatus, error } = useSelector((state: IAppState) => state.cityData);
+    const { cityName } = useSelector((state: IAppState) => state.cityName);
+    const dispatch = useAppDispatch();
+    const [lat, lon] = getCoordFromId(id);
 
     useEffect(() => {
-        if (cityGeo.name) {
-            const { lat, lon } = cityGeo;
-            dispatch(fetchCityDetailedData({ lat: lat, lon: lon }));
-        }
+        dispatch(fetchCityDetailedData({ lat: lat, lon: lon }));
     }, []);
 
-    if (!cityGeo.name) {
-        return <SharedComponents.WarningMessage text="Please, enter city name" />;
-    }
-
-    if (cityDataLoadingStatus === 'loading' || !cityData.name) {
+    if (cityDataLoadingStatus === 'loading') {
         return <CircularProgress color="secondary" />;
     }
     if (error) {
-        return <SharedComponents.WarningMessage text="Something is wrong... Please, try later" />;
+        return <SharedComponents.WarningMessage text="Incorrect URL" />;
     }
-
-    const { name, sys, weather, main, dt, timezone } = cityData;
 
     return (
         <SharedComponents.CityDataContainer>
             <CardContent>
-                <SharedComponents.CityCardNameText text={`${name}, ${sys.country}`} />
-                <SharedComponents.CityCardSecondaryText text={`${getLocalTime(dt, timezone)}`} />
-                <SharedComponents.GrigContainer>
-                    <SharedComponents.CityCardMainText text={`${main.temp} °C`} />
-                    <SharedComponents.WeatherIcon
-                        icon={weather[0].icon}
-                        title={weather[0].description}
-                    />
-                </SharedComponents.GrigContainer>
-                <SharedComponents.CityCardSecondaryText text={weather[0].description} />
-                <SharedComponents.CityCardSecondaryText text={`feels like ${main.feels_like}`} />
+                <SharedComponents.CityCardData />
             </CardContent>
-            
-            <SharedComponents.ToListButton />
-            <SharedComponents.ToForecastButton />
+            {cityName ? (
+                <SharedComponents.ToListButton name={`${cityName}`} />
+            ) : (
+                <SharedComponents.ToHomePageButton />
+            )}
+            <SharedComponents.ToForecastButton id={id} />
         </SharedComponents.CityDataContainer>
-    );
-};
-
-export const DetailedCityDataSection = () => {
-    const { cityData, cityDataLoadingStatus } = useSelector((state: IAppState) => state.cityData);
-    const { cityGeo } = useSelector((state: IAppState) => state.cityGeo);
-    if (!cityGeo.name) {
-        return null;
-    }
-    if (cityDataLoadingStatus === 'loading' || !cityData.name) {
-        return <CircularProgress color="secondary" />;
-    }
-    const { main, wind, clouds } = cityData;
-    return (
-        <SharedComponents.DetailedCityDataContainer>
-            <DetailedCityCard
-                param="Atmospheric pressure,"
-                measure="hPa"
-                value={main.pressure}
-            />
-            <DetailedCityCard
-                param="Humidity,"
-                measure="%"
-                value={main.humidity}
-            />
-            <DetailedCityCard
-                param="Cloudiness,"
-                measure="%"
-                value={clouds.all}
-            />
-            <DetailedCityCard
-                param="Wind speed,"
-                measure="meter/sec"
-                value={wind.speed}
-            />
-            <DetailedCityCard
-                param="Wind gust,"
-                measure="meter/sec"
-                value={wind.gust ? wind.gust : '-'}
-            />
-        </SharedComponents.DetailedCityDataContainer>
-    );
-};
-
-export const DetailedCityCard = ({ param, measure, value }: any) => {
-    return (
-        <SharedComponents.DetailedCardContainer>
-            <SharedComponents.CityCardTitleText text={param} />
-            <SharedComponents.CityCardSecondaryText text={measure} />
-            <SharedComponents.CityCardSecondaryText text={value} />
-        </SharedComponents.DetailedCardContainer>
     );
 };
