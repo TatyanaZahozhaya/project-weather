@@ -1,6 +1,6 @@
-# PROJECT-WEATHER
+# PROJECT-WEATHER   GoodWeather
 
-GithubPages: https://tatyanazahozhaya.github.io/project-weather/
+
 
 ## Summary
 
@@ -23,8 +23,7 @@ The data is automatically updated when the page is reloaded.
 ## Technologies
 
 ##### React,                                                                   
-##### Redux Toolkit,
-##### Redux Persist,                                       
-##### Material UI
-##### TypeScript,
+##### Redux, Redux Thunk, Redux Toolkit, Redux Persist,
+##### TypeScript,                                       
 ##### Axios
+##### Material UI
