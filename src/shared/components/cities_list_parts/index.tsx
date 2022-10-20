@@ -2,24 +2,19 @@ import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Grow, List, ListItem } from '@mui/material';
 import styled from '@emotion/styled';
+import { useStyles } from './style';
 
 interface IListElement {
     children?: React.ReactNode;
 }
 
 export const ListElement: FC<IListElement> = memo(({ children }) => {
+    const { classes } = useStyles();
     return (
         <Grow
             in={true}
             {...{ timeout: 800 }}>
-            <List
-                sx={{
-                    width: '100%',
-                    maxWidth: 360,
-                    bgcolor: 'background.paper',
-                }}>
-                {children}
-            </List>
+            <List className={classes.listElement}>{children}</List>
         </Grow>
     );
 });

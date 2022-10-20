@@ -15,6 +15,7 @@ export {
 } from './buttons';
 export { CitiesList } from './cities_list';
 export { CitiesListItem } from './cities_list_item';
+export { CitiesListText } from './cities_list_text';
 export { ListElement, ListItemAsLink } from './cities_list_parts';
 export { CityCard } from './city_card';
 export { CityCardData } from './city_card_data';

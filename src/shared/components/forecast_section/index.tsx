@@ -16,9 +16,9 @@ export const ForecastSection = ({ id }: SharedTypes.IDataSection) => {
     );
     const dispatch = useAppDispatch();
     const { fetchCityForecast, fetchCityDetailedData } = Actions;
-    const [lat, lon] = getCoordFromId(id);
 
     useEffect(() => {
+        const [lat, lon] = getCoordFromId(id);
         dispatch(fetchCityForecast({ lat: lat, lon: lon }));
         dispatch(fetchCityDetailedData({ lat: lat, lon: lon }));
     }, []);

@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SharedComponents, Actions, useAppDispatch, Paths } from '@shared';
 
 export const SearchField = () => {
     const [name, setName] = useState('');
     const dispatch = useAppDispatch();
     const { addCityName } = Actions;
-    const nameField = useRef<HTMLAnchorElement>(null);
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.value.length >= 0) {
@@ -20,20 +20,14 @@ export const SearchField = () => {
             alert('enter city name ');
         } else {
             dispatch(addCityName(name));
+            navigate(`${Paths.RESPONSE_LIST}/${name}`);
             setName('');
-        }
-        if (nameField.current !== null) {
-            nameField.current.click();
         }
     };
 
     return (
         <>
             <SharedComponents.FormSearchField onSubmit={onSubmitForm}>
-                <Link
-                    ref={nameField}
-                    to={`${Paths.RESPONSE_LIST}/${name}`}
-                />
                 <SharedComponents.InputSearchField
                     label="Enter city name"
                     ariaLabel="city ​​search form"

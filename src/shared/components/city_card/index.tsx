@@ -16,9 +16,9 @@ export const CityCard = ({ id }: SharedTypes.IDataSection) => {
     const { cityDataLoadingStatus, error } = useSelector((state: IAppState) => state.cityData);
     const { cityName } = useSelector((state: IAppState) => state.cityName);
     const dispatch = useAppDispatch();
-    const [lat, lon] = getCoordFromId(id);
 
     useEffect(() => {
+        const [lat, lon] = getCoordFromId(id);
         dispatch(fetchCityDetailedData({ lat: lat, lon: lon }));
     }, []);
 

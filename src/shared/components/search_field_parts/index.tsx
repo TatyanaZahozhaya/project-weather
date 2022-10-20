@@ -1,5 +1,6 @@
 import { FC, memo } from 'react';
 import { Box, TextField } from '@mui/material';
+import { useStyles } from './style';
 
 interface IInputSearchField {
     label: string;
@@ -17,15 +18,14 @@ interface IFormSearchField {
 
 export const InputSearchField: FC<IInputSearchField> = memo(
     ({ label, ariaLabel, value, onChange }) => {
+        const { classes } = useStyles();
         return (
             <TextField
                 type="search"
                 id="filled-basic"
                 variant="filled"
                 size="small"
-                sx={{
-                    backgroundColor: 'white',
-                }}
+                className={classes.inputSearchField}
                 label={label}
                 onChange={onChange}
                 aria-label={ariaLabel}
@@ -37,19 +37,14 @@ export const InputSearchField: FC<IInputSearchField> = memo(
 
 export const FormSearchField: FC<IFormSearchField> = memo(
     ({ children, onSubmit, target, action }) => {
+        const { classes } = useStyles();
         return (
             <Box
                 component="form"
                 target={target}
                 action={action}
                 onSubmit={onSubmit}
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    '@media (max-width:600px)': {
-                        gridArea: '2/1/3/3',
-                    },
-                }}>
+                className={classes.formSearchField}>
                 {children}
             </Box>
         );

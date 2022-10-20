@@ -1,4 +1,4 @@
-import { Avatar, ListItemAvatar, ListItemText } from '@mui/material';
+import { Avatar, ListItemAvatar } from '@mui/material';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { SharedComponents, SharedTypes, Paths } from '@shared';
 
@@ -14,14 +14,15 @@ export const CitiesListItem = (item: SharedTypes.ICityGeo) => {
                     </Avatar>
                 </ListItemAvatar>
                 {state ? (
-                    <ListItemText
-                        sx={{ mt: 1 }}
-                        primary={`${name} - ${country} - ${state}`}
+                    <SharedComponents.CitiesListText
+                        name={name}
+                        country={country}
+                        state={state}
                     />
                 ) : (
-                    <ListItemText
-                        sx={{ mt: 1 }}
-                        primary={`${name} - ${country}`}
+                    <SharedComponents.CitiesListText
+                        name={name}
+                        country={country}
                     />
                 )}
             </SharedComponents.ListItemAsLink>

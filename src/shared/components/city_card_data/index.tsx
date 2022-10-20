@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { CircularProgress } from '@mui/material';
 import { SharedComponents, IAppState, Hooks } from '@shared';
 
 export const CityCardData = () => {
@@ -6,9 +7,9 @@ export const CityCardData = () => {
     const [name, country, date, temp, fellsLike, icon, description] =
         Hooks.useCityCardParams(cityData);
 
-        if (!cityData) {
-            return <div>loading</div>
-        }
+    if (!cityData) {
+        return <CircularProgress color="secondary" />;
+    }
 
     return (
         <>

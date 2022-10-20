@@ -1,49 +1,35 @@
 import { FC, memo } from 'react';
 import { AppBar, Toolbar } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { useStyles } from './style';
 
 interface IAppBar {
     children?: React.ReactNode;
+    name?: string;
 }
-
 interface IToolbar extends IAppBar {}
 
 export const AppBarHeader: FC<IAppBar> = memo(({ children }) => {
     return <AppBar position="fixed">{children}</AppBar>;
 });
 
-export const ToolbarHeader: FC<IToolbar> = memo(({ children }) => {
-    return <Toolbar sx={{ justifyContent: 'right' }}>{children}</Toolbar>;
-});
-
-export const ToolbarHeaderWithSearchField: FC<IToolbar> = memo(({ children }) => {
-    const { spacing } = useTheme();
-    return (
-        <Toolbar
-            sx={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1fr',
-                justifyContent: 'space-between',
-                gap: `${spacing(2)}`,
-                '@media (max-width:600px)': {
-                    gridTemplateColumns: '1fr 1fr',
-                    gridTemplateRows: '0.5fr 1fr',
-                    gap: '0',
-                    pb: `${spacing(1)}`,
-                },
-            }}>
-            {children}
-        </Toolbar>
-    );
-});
-
 export const AppBarFooter: FC<IAppBar> = memo(({ children }) => {
+    const { classes } = useStyles();
     return (
         <AppBar
             component="footer"
             position="relative"
-            sx={{ top: 'auto', bottom: 0 }}>
+            className={classes.appBarFooter}>
             {children}
         </AppBar>
     );
+});
+
+export const ToolbarHeader: FC<IToolbar> = memo(({ children }) => {
+    const { classes } = useStyles();
+    return <Toolbar className={classes.toolbarHeader}>{children}</Toolbar>;
+});
+
+export const ToolbarHeaderWithSearchField: FC<IToolbar> = memo(({ children }) => {
+    const { classes } = useStyles();
+    return <Toolbar className={classes.toolbarHeaderWithSearchField}>{children}</Toolbar>;
 });

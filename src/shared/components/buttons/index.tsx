@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { Box, ToggleButton, Tooltip, Fade } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useTheme } from '@mui/material/styles';
 import styled from '@emotion/styled';
 
 import { Paths, SharedTypes } from '@shared';
+import { useStyles } from './style';
 
 interface IThemeButton {
     onClick(e: React.MouseEvent): void;
@@ -23,7 +23,7 @@ interface ICityDataButton {
 }
 
 export const ThemeButton: FC<IThemeButton> = memo(({ onClick, ariaLabel, value, title }) => {
-    const { spacing } = useTheme();
+    const { classes } = useStyles();
     return (
         <Tooltip
             title={title}
@@ -31,18 +31,7 @@ export const ThemeButton: FC<IThemeButton> = memo(({ onClick, ariaLabel, value, 
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}>
             <ToggleButton
-                sx={{
-                    justifySelf: 'right',
-                    display: 'flex',
-                    color: 'inherit',
-                    borderRadius: '50%',
-                    width: `${spacing(6)}`,
-                    '@media (max-width:600px)': {
-                        gridArea: '1/2/2/3',
-                        width: `${spacing(4)}`,
-                        height: `${spacing(4)}`,
-                    },
-                }}
+                className={classes.toggleButton}
                 aria-label={ariaLabel}
                 value={value ? value : ''}
                 onClick={onClick}>
@@ -58,21 +47,9 @@ const ButtonStyled = styled(Link)`
     color: inherit;
 `;
 export const CityDataButton: FC<ICityDataButton> = memo(({ title, link, ariaLabel }) => {
-    const { palette, spacing } = useTheme();
+    const { classes } = useStyles();
     return (
-        <Box
-            sx={{
-                display: 'inline-block',
-                padding: `${spacing(0.6)}`,
-                margin: `${spacing(0.7)}`,
-                borderRadius: `${spacing(0.5)}`,
-                color: 'inherit',
-                fontSize: '14px',
-                backgroundColor: palette.secondary.light,
-                '&:hover': {
-                    backgroundColor: palette.secondary.main,
-                },
-            }}>
+        <Box className={classes.boxCityDataButton}>
             <ButtonStyled
                 to={link}
                 aria-label={ariaLabel}>

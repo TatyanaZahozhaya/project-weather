@@ -1,19 +1,18 @@
 import { FC, memo } from 'react';
-import { Card, Typography, useTheme } from '@mui/material';
+import { Card, Typography } from '@mui/material';
+import { useStyles } from './style';
 
 interface IWarningMessage {
     text: string;
 }
 
 export const WarningMessage: FC<IWarningMessage> = memo(({ text }) => {
-    const { spacing } = useTheme();
+    const { classes } = useStyles();
 
     return (
-        <Card sx={{ minWidth: 275, textAlign: 'center', padding: `${spacing(2)}` }}>
+        <Card className={classes.warningMessageCard}>
             <Typography
-                sx={{
-                    color: 'warning.dark',
-                }}
+                className={classes.warningMessageText}
                 variant="h5"
                 component="div">
                 {text}
